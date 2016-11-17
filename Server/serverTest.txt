@@ -1,0 +1,21 @@
+The server part is split into 3 sections:
+Main Server, Request Handler, Thread Handler
+
+Using the JUnit class provided, I managed to test the Request Handler. The input should be the method name, url and the HTTP version.
+I have used regular expressions to compare the input. There are 3 types of acceptable method inputs, GET, HEAD and POST. Any other method
+inputs will not be accepted. A response will be generated no matter what the input.
+
+testGetRequestHttp1() : GET method input : returns "HTTP/1.0 501 GET Not Implemented\r\n\r\n"
+testHeadRequestHttp1() : HEAD method input : returns "HTTP/1.0 501 HEAD Not Implemented\r\n\r\n"
+testPostRequestHttp1() : POST method input : returns "HTTP/1.0 501 POST Not Implemented\r\n\r\n"
+
+testInvalidRequest() : Invalid method input or Invalid url or Invalid HTTP version : returns "HTTP/1.0 400 Bad Request\r\n\r\n"
+
+ Extra test methods were added to the JUnit class. These methods test for:
+ 
+ testInvalidHTTPRequest() : HTTP/1.1 input : returns "HTTP/1.0 400 Bad Request\r\n\r\n"
+ testOtherHTTPRequest() : HTTP/0.9 input for all methods : returns "HTTP/1.0 501 GET Not Implemented\r\n\r\n" (for get method)
+ testNoHTTPRequestGetMethod() : No HTTP request input for GET method : returns "HTTP/1.0 501 GET Not Implemented\r\n\r\n" (for get method)
+ testNoHTTPRequestHeadMethod() : No HTTP request input for HEAD method : returns "HTTP/1.0 400 Bad Request\r\n\r\n" (for head method and post method)
+ testNoURI() : No URI request input for all methods : returns "HTTP/1.0 400 Bad Request\r\n\r\n" (for all methods)
+ testInvalidURI() : Invalid URI request input for all methods : returns "HTTP/1.0 400 Bad Request\r\n\r\n" (for all methods)

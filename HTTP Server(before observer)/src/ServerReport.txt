@@ -1,0 +1,24 @@
+I have tested the FileServer with a valid url for the various methods.
+(->) = return value
+All these outputs have been tested using the client and also with JUnit testing class.
+
+Valid URLS:
+GET method -> HTTP/1.0 200 OK + response headers + response body
+HEAD method -> HTTP/1.0 200 OK + response headers only
+POST method -> HTTP/1.0 200 OK + response Headers + response body
+GET-CONDITIONAL method -> Check date of last modified
+						if dates are equal  : HTTP/1.0 304 Not Modified + response headers
+						else				: HTTP/1.0 200 OK + response headers + response body
+
+Invalid URLS:
+GET method -> HTTP/1.0 404 Not Found + date response header
+HEAD method -> HTTP/1.0 404 Not Found + date response header
+POST method -> HTTP/1.0 201 Created + response headers
+			(This tells the client that a new file was created at the url supplied and the body of the post request was input into the file.)
+			
+GET-CONDITIONAL method -> HTTP/1.0 404 Not Found + date response header
+
+I have also tested the server using a Google Chrome web browser. 
+By inputing http://localhost:4444/index.html into the web browser, the content of the file was shown in the web browser. 
+The links in the file were all working and led to their specific pages respectively. 
+Using the developer tools in Google Chrome web browser, I was able to check that the GET request worked and got a 200 OK status code response.

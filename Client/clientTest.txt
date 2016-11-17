@@ -1,0 +1,26 @@
+From the coursework specifications, a test url, http://posttestserver.com/ was given to test the client. Using this url, I sent each of the various requests,
+GET method, HEAD method and the 2 different input for POST methods to the url.
+The method names are as follows, httpGet, httpHead and httpPost.
+
+From the GET request, I got the response header and the response body from the server. 
+From the HEAD request, I got only the response header from the server.
+From the POST request, I managed to send a String input and later an ArrayList input to the server and store it on the server. The server then sent back a response 
+link. Using this response link, I managed to retrieve and review the stored data on the server.
+
+After that, I created a new JUnit class called G52APRClientTests to test the client again.
+In this JUnit class, I have created 4 test methods. These methods connect to the server at port 4444 and compare the response got back from the server to the
+expected response. 
+
+Test Get Request Method : testGetRequest()
+	Response got from server : "HTTP/1.0 501 GET Not Implemented" (expected response)
+	
+Test Head Request Method : testHeadRequest()
+	Response got from server : "HTTP/1.0 501 HEAD Not Implemented" (expected response)
+	
+Test Post Request Method : testPostRequestString() - Sent a String input to the server
+	Response got from server : "HTTP/1.0 501 POST Not Implemented" (expected response)
+	
+Test Post Request Method : testPostRequestArrayList() - Sent an ArrayList input to the server
+	Response got from server : "HTTP/1.0 501 POST Not Implemented" (expected response)
+	
+I have attached this JUnit class in my submitted files. I have used both testing methods to test my code.All the request methods got the expected response.
